@@ -1,0 +1,178 @@
+<div class="container-fluid">  
+  <p-panel header="Envanter Listesi" [toggleable]="true">
+    <div class="ui-g">      
+      <div class="ui-g-12">        
+        <p-table #dt [columns]="cols" [value]="envanterlist" [paginator]="true" [rows]="10" [first]="first" 
+        selectionMode="single" [(selection)]="selectedEnvanter" (onRowSelect)="onRowSelect($event)">
+        
+        <ng-template pTemplate="caption">
+            <div class="ui-helper-clearfix" style="text-align: left">                                
+                <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF" (click)="exportPdf()" class="ui-button-warning"></button>                
+            </div>         
+        </ng-template>
+
+        <ng-template pTemplate="header" let-envanterlist>
+            <tr>              
+              <th style="width: 5%">No</th>
+              <th style="width: 12%">Ad</th>
+              <th style="width: 13%">SeriNo</th>
+              <th style="width: 8%">Marka</th>
+              <th style="width: 15%">Tür</th>
+              <th style="width: 5%">Oda</th>
+              <th style="width: 15%">Birim</th>             
+              <th style="width: 13%">Demirbaş No</th>
+            </tr>   
+            <tr> 
+              <th></th>                
+              <th><input pInputText type="text" (input)="dt.filter($event.target.value, 'ad', 'ad'.filterMatchMode)" class="form-control"></th>
+              <th><input pInputText type="text" (input)="dt.filter($event.target.value, 'serino', 'serino'.filterMatchMode)" class="form-control"></th>
+              <th><input pInputText type="text" (input)="dt.filter($event.target.value, 'marka', 'marka'.filterMatchMode)" class="form-control"></th> 
+              <th><input pInputText type="text" (input)="dt.filter($event.target.value, 'turu', 'turu'.filterMatchMode)" class="form-control"></th>
+              <th><input pInputText type="text" (input)="dt.filter($event.target.value, 'oda', 'oda'.filterMatchMode)" class="form-control"></th> 
+              <th><input pInputText type="text" (input)="dt.filter($event.target.value, 'birim', 'birim'.filterMatchMode)" class="form-control"></th>
+              <th><input pInputText type="text" (input)="dt.filter($event.target.value, 'demirbasno', 'demirbasno'.filterMatchMode)" class="form-control"></th>
+            </tr>                                 
+          </ng-template>
+          <ng-template pTemplate="body" let-envanterlist  let-rowIndex="rowIndex"  let-columns="columns">
+            <tr [pSelectableRow]="envanterlist">                             
+              <td>{{envanterlist.id}}</td>
+              <td>{{envanterlist.ad }}</td>
+              <td>{{envanterlist.serino}}</td>
+              <td>{{envanterlist.marka}}</td>
+              <td>{{envanterlist.turu}}</td>
+              <td>{{envanterlist.oda}}</td>
+              <td>{{envanterlist.birim}}</td>              
+              <td>{{envanterlist.demirbasno}}</td>
+            </tr>
+          </ng-template>                       
+        </p-table>
+
+        <p-dialog header="Envanter Detay" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '50%'}">
+            <div class="ui-g ui-fluid" *ngIf="selectedEnvanter">
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="No" class="label_textBox">No</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="No" disabled="true" [(ngModel)]="selectedEnvanter.id" autofocus  class="form-control"/>
+                    </div>                    
+                </div> 
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="Ad"class="label_textBox">Ad</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="Ad" [(ngModel)]="selectedEnvanter.ad" autofocus class="form-control"/>
+                    </div>                    
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="Turu" class="label_textBox">Turu</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="Turu" disabled="true" [(ngModel)]="selectedEnvanter.turu" autofocus  class="form-control"/>
+                    </div>                    
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="serino" class="label_textBox">Seri No</label>
+                        <input pInputText id="serino" [(ngModel)]="selectedEnvanter.serino" autofocus  class="form-control"/>
+                    </div>
+                    <div class="ui-g-4">
+                        <label for="marka" class="label_textBox">Marka</label>
+                        <input pInputText id="marka" [(ngModel)]="selectedEnvanter.marka" autofocus  class="form-control"/>
+                    </div>  
+                    <div class="ui-g-4">
+                        <label for="model" class="label_textBox">Model</label>
+                        <input pInputText id="model" [(ngModel)]="selectedEnvanter.model" autofocus  class="form-control"/>
+                    </div>                    
+                </div> 
+                
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="Ad" class="label_textBox">Birim</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="birim" [(ngModel)]="selectedEnvanter.birim" autofocus  class="form-control"/>
+                    </div>                    
+                </div>    
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="Ad" class="label_textBox">Oda</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="oda" [(ngModel)]="selectedEnvanter.oda" autofocus  class="form-control"/>
+                    </div>                    
+                </div>
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="demirbasno" class="label_textBox">Demirbaş No</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="demirbasno" [(ngModel)]="selectedEnvanter.demirbasno" autofocus  class="form-control"/>
+                    </div>                    
+                </div>
+                <div class="ui-g-12" *ngIf="turcheck">                   
+                    <div class="ui-g-6">
+                        <label for="Mac" class="label_textBox">Mac</label>
+                        <input pInputText id="Mac" [(ngModel)]="selectedEnvanter.mac" autofocus  class="form-control"/>
+                    </div>   
+                    <div class="ui-g-6">
+                        <label for="Mac" class="label_textBox">Ip</label>
+                        <input pInputText id="Ip" [(ngModel)]="selectedEnvanter.ip" autofocus  class="form-control"/>
+                    </div>                    
+                </div>
+                <div class="ui-g-12" *ngIf="donanimCheck">
+                    <div class="ui-g-4">
+                        <label for="islemci" class="label_textBox">işlemci</label>
+                        <input pInputText id="islemci" [(ngModel)]="selectedEnvanter.islemci" autofocus  class="form-control"/>
+                    </div>
+                    <div class="ui-g-4">
+                        <label for="ram" class="label_textBox">Ram</label>
+                        <input pInputText id="ram" [(ngModel)]="selectedEnvanter.ram" autofocus  class="form-control"/>
+                    </div>   
+                    <div class="ui-g-4">
+                        <label for="harddisk" class="label_textBox">harddisk</label>
+                        <input pInputText id="harddisk" [(ngModel)]="selectedEnvanter.harddisk" autofocus  class="form-control"/>
+                    </div>                    
+                </div>
+                
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="sorumlu1" class="label_textBox">Sorumlu1</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <p-dropdown [options]="personellist" [(ngModel)]="selectedEnvanter.sorumlu1" optionLabel="adsoyad" placeholder="Personel Seçin Lütfen"></p-dropdown> 
+                        <p>Seçilen Personel Sicil: {{selectedEnvanter.sorumlu1.sicilno ? selectedEnvanter.sorumlu1.sicilno: 'none'}}</p>                        
+                    </div>                    
+                </div>                  
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="aciklama" class="label_textBox">Açıklama</label>
+                    </div>
+                    <div class="ui-g-8">                        
+                        <textarea id="aciklama" pInputTextarea [(ngModel)]="selectedEnvanter.aciklama"  class="form-control"></textarea>
+                    </div>                    
+                </div> 
+                <div class="ui-g-12">
+                    <div class="ui-g-4">
+                        <label for="barkotno" class="label_textBox">Barkot No</label>
+                    </div>
+                    <div class="ui-g-8">
+                        <input pInputText id="barkotno"  [(ngModel)]="selectedEnvanter.barkodid" autofocus  class="form-control"/>
+                    </div>                    
+                </div>       
+            </div>
+            <p-footer >
+                <div class="ui-dialog-buttonpane ui-helper-clearfix text-center">                    
+                    <button type="button" pButton icon="pi pi-check" (click)="EnvanterIslem()" label="Güncelle"></button>
+                    <button type="button" pButton icon="pi pi-check" (click)="BarkotGoster()" label="Barkodu Göster"></button>
+                    <p-messages [(value)]="msg"></p-messages>
+                </div>
+            </p-footer>
+        </p-dialog>
+
+      </div>
+    </div>    
+  </p-panel>
+</div>

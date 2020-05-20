@@ -1,0 +1,45 @@
+.container_anaSayfa
+{
+    background-image: url("/assets/images/arkaplan.png");
+    margin: 20px 20px 20px 20px;       
+}
+
+
+::ng-deep .ui-panelmenu .ui-widget {
+	background-color: #5F5F5F !important;
+	font-family: 'Segoe UI';
+
+}
+::ng-deep .ui-panelmenu .ui-panelmenu-header .ui-menuitem-text	{
+	color: white;
+  font-family: 'Segoe UI';
+  font-weight: 400 !important;
+  font-size: 16px;
+  
+
+};
+::ng-deep  .ui-menu-list	 {
+  font-family: 'Segoe UI'; 
+
+};
+
+::ng-deep .ui-panelmenu .ui-panelmenu-header.ui-state-active, .ui-panelmenu .ui-panelmenu-header.ui-state-active a{
+background-color: red !important;
+};
+
+::ng-deep .p-col-2{
+  padding: 0px 0 30% 0; 
+    
+}
+
+
+.center_content{   
+    height: 70vh;
+  }
+
+
+  ::ng-deep .ui-panelmenu .ui-panelmenu-header.ui-state-active a {
+    border: 1px solid #dadada;
+    background-color:#b4c3cb !important;
+    color: #385048;
+}

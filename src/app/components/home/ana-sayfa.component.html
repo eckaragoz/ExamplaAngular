@@ -1,0 +1,18 @@
+<div class="container_anaSayfa">
+  <div class="p-grid">
+    <div class="p-col-12" style="background-color:#e1e7ea; border-radius: 10px;">
+      <app-header></app-header>
+    </div>
+    <div class="p-col-2" style="background-color: #e1e7ea; border-radius: 10px;">
+      <p-panelMenu [model]="items" [style]="{ width: '99%' }"></p-panelMenu>
+    </div>
+    <div class="p-col-10" style="background-color: #f0f3f5;">      
+      <div class="row" style="margin-top: 20px;">
+        <app-envanter [logsicil]="logsicil" *ngIf="menuItem == '3'"></app-envanter>
+      </div>
+    </div>
+    <div class="p-col-12" style="background-color:#7B95A3; border-radius: 10px;">
+      <app-footer [username]="username"></app-footer>
+    </div>
+  </div>
+</div>

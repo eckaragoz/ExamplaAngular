@@ -1,0 +1,65 @@
+    <div class="center-login">
+      <div class="ui-g">
+        <div class="ui-g-4"></div>
+        <div class="ui-g-4 div-center">                                           
+            <div style="padding: 2px 10px 2px 10px; text-align: center;"><label class="label_textBox_header">Sporyal Kullanıcı Giriş</label></div><br />
+            <div class="row ui-float-label" style="padding: 1px 0px 1px 0px;">              
+              <input id="KullAdi" [(ngModel)]="userName" type="text"  class="form-control" pInputText style="width: 98%"/>                            
+              <label for="KullAdi">Kullanıcı Adı</label>
+            </div>
+            <div class="row ui-float-label" style="padding: 5px 0px 5px 0px;">              
+              <input id="Sifre" [(ngModel)]="password" type="password"  class="form-control" pInputText style="width: 98%" />                       
+              <label for="Sifre">Şifre</label>
+            </div>           
+            <div class="row">              
+              <p-messages [(value)]="msg"> </p-messages>
+            </div>            
+            <div class="row" style="padding: 5px 10px 5px 10px;">   
+             <button pButton type="button" label="Giriş" class="ui-button-rounded ui-button-info"  (click)="LoginCheck()" style="width: 98%"></button>                    
+            </div>
+            <div class="row" style="padding: 5px 50% 5px 10px;">              
+              <button pButton type="submit" label="Yeni Kullanıcı" class="ui-button-rounded ui-button-success" icon="pi pi-plus"   (click)="OpenNewUserDialog()" style="width: 98%"></button>                       
+             </div>           
+        </div>
+        <div class="ui-g-4"></div>
+      </div>
+    </div>  
+
+    <p-dialog header="Yeni Kullanıcı" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '30%'}">
+     <div class="ui-g ui-fluid">
+        <div class="ui-g-12">
+          <div class="ui-g-4">
+            <label for="Ad"class="label_textBox2">Kullanıcı Adı</label>
+         </div>
+         <div class="ui-g-8">            
+            <input pInputText id="KullAdi" [(ngModel)]="newuser.username" type="text"  class="form-control"  style="width: 98%"/> 
+         </div>
+       </div>
+       <div class="ui-g-12">
+         <div class="ui-g-4">
+          <label for="Ad"class="label_textBox2">Şifre</label>
+         </div>
+         <div class="ui-g-8">            
+          <input pInputText id="password" [(ngModel)]="newuser.password" type="password"  class="form-control"  style="width: 98%"/> 
+         </div>
+       </div>      
+       <div class="ui-g-12">
+        <div class="ui-g-4">
+         <label for="Ad"class="label_textBox2">Şifre Doğrulama</label>
+        </div>
+        <div class="ui-g-8">            
+         <input pInputText id="password" [(ngModel)]="newuser.passwordconfirm" type="password"  class="form-control"  style="width: 98%"/> 
+        </div>
+      </div>
+      <div class="ui-g-12">
+       <p-messages [(value)]="msgnewuser"> </p-messages>  
+      </div>
+      <div class="ui-g-12" style="padding: 5px 10px 5px 10px;">                    
+        <button pButton type="submit" label="Oluştur" class="ui-button-rounded ui-button-success"  (click)="AddNewUser()" style="width: 98%"></button>                       
+       </div>
+    </div>     
+    </p-dialog>
+
+    
+    
+

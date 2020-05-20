@@ -1,0 +1,32 @@
+@media screen and (min-width: 800px) {  
+  .center-login {    
+   padding: 100px; 
+   height: 100vh;     
+   //background-color:#CCE9EC;   
+   background-image: url("/assets/images/arkaplan.png");
+  }
+
+  .label_textBox
+  {
+    color: black; font-size: 18px; text-decoration: underline; font-weight: bold;
+  }
+
+  .label_textBox_header
+  {    
+    color: blueviolet;
+    font-size: x-large;
+    font-family: cursive;
+  }
+
+  .label_textBox2
+  {
+    color: black; font-size: 14px; font-weight: bold;
+  }
+
+  .div-center{
+    //border: solid 1px silver ;
+    padding: 50px;    
+    //box-shadow:  -1px 4px 26px 11px rgba(0,0,0,0.75);
+    //border-radius: 30px;    
+  }
+}
